@@ -9,7 +9,8 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/student")
+@RequestMapping("/api/students")
+
 public class StudentController {
 
     @Autowired
@@ -25,16 +26,16 @@ public class StudentController {
         return studentService.findAll();
     }
     @PostMapping
-    public Student save(@PathVariable Student student){
+    public Student save(@RequestBody Student student){
         return studentService.save(student);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public Student update(@PathVariable long id, @RequestBody Student student){
         return studentService.update(id, student);
     }
 
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public void delete(@PathVariable long id){
         studentService.delete(id);
     }
